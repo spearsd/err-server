@@ -8,11 +8,11 @@ class AutoSysServer(BotPlugin):
     def server_target(self, msg, args):
         """Target server for jobs"""
         target_server = ""
-        with tempfile.TemporaryFile() as tempf:
-            proc = subprocess.Popen(['echo',args,'>','/var/errbot/target_server'], stdout=tempf, shell=True)
+        with open('/var/errbot/target_server', 'w') as file:
+            proc = subprocess.Popen(['echo',args], stdout=file)
             proc.wait()
-            tempf.seek(0)
-            target_server = str(target_server) + str(tempf.read())
+            file.seek(0)
+            target_server = str(target_server) + str(file.read())
         return target_server + " is now the targeted server."
     
     @botcmd
