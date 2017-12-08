@@ -13,7 +13,7 @@ class AutoSysServer(BotPlugin):
             proc.wait()
             file.seek(0)
             target_server = str(target_server) + str(file.read())
-        return target_server + " is now the targeted server."
+        return "Targeted server: " + target_server
     
     @botcmd
     def server_active(self, msg, args):
