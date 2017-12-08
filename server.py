@@ -9,7 +9,7 @@ class AutoSysServer(BotPlugin):
         """Target server for jobs"""
         target_server = ""
         with tempfile.TemporaryFile() as tempf:
-            proc = subprocess.Popen(['echo',args,'>','/var/errbot/target_server'], stdout=tempf)
+            proc = subprocess.Popen(['echo',args,'>','/var/errbot/target_server'], stdout=tempf, shell=True)
             proc.wait()
             tempf.seek(0)
             target_server = str(target_server) + str(tempf.read())
