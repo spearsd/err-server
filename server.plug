@@ -1,7 +1,7 @@
 
 [Core]
-Name = AutoSysJob
-Module = job
+Name = AutoSysServer
+Module = server
 
 [Python]
 Version = 3
