@@ -8,6 +8,7 @@ class AutoSysServer(BotPlugin):
     def server_target(self, msg, args):
         """Target server for jobs"""
         self['target_server'] = args
+        self.target_server = args
         #with open('/var/errbot/target_server', 'w+') as file:
         #    proc = subprocess.Popen(['echo',args], stdout=file)
         #    proc.wait()
