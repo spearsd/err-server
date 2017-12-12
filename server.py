@@ -7,21 +7,21 @@ class AutoSysServer(BotPlugin):
     @botcmd
     def server_target(self, msg, args):
         """Target server for jobs"""
-        target_server = ""
-        with open('/var/errbot/target_server', 'w+') as file:
-            proc = subprocess.Popen(['echo',args], stdout=file)
-            proc.wait()
-            file.seek(0)
-            target_server = str(target_server) + str(file.read())
+        self['target_server'] = args
+        #with open('/var/errbot/target_server', 'w+') as file:
+        #    proc = subprocess.Popen(['echo',args], stdout=file)
+        #    proc.wait()
+        #    file.seek(0)
+        #    target_server = str(target_server) + str(file.read())
         return "Targeted server: " + target_server
     
     @botcmd
     def server_active(self, msg, args):
         """Retrieve targeted server"""
-        target_server = ""
-        with open('/var/errbot/target_server', 'r') as file:
-            target_server = str(file.read())
-        return "Currently targeted server: " + target_server
+        #target_server = ""
+        #with open('/var/errbot/target_server', 'r') as file:
+        #    target_server = str(file.read())
+        return "Currently targeted server: " + self['target_server']
     
 # Used to run commands in terminal and capture the result in string var.
 #with tempfile.TemporaryFile() as tempf:
