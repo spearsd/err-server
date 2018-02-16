@@ -22,7 +22,12 @@ class AutoSysServer(BotPlugin):
         #target_server = ""
         #with open('/var/errbot/target_server', 'r') as file:
         #    target_server = str(file.read())
-        return "Currently targeted server: " + self['target_server']
+        try:
+            self['target_server']
+        except:
+            yield "No server targeted! target server with: !server target hostname."
+        else:
+            return "Currently targeted server: " + self['target_server']
     
 # Used to run commands in terminal and capture the result in string var.
 #with tempfile.TemporaryFile() as tempf:
