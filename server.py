@@ -22,9 +22,7 @@ class AutoSysServer(BotPlugin):
         #target_server = ""
         #with open('/var/errbot/target_server', 'r') as file:
         #    target_server = str(file.read())
-        try:
-            self['target_server']
-        except:
+        if str(self['target_server']).strip() == "":
             yield "No server targeted! target server with: !server target hostname."
         else:
             return "Currently targeted server: " + self['target_server']
