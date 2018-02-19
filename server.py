@@ -4,6 +4,8 @@ import subprocess, tempfile, re, time
 class AutoSysServer(BotPlugin):
     """AutoSys server plugin for Errbot"""
 
+    target_server = ""
+    
     @botcmd
     def server_target(self, msg, args):
         """Target server for jobs"""
@@ -22,10 +24,10 @@ class AutoSysServer(BotPlugin):
         #target_server = ""
         #with open('/var/errbot/target_server', 'r') as file:
         #    target_server = str(file.read())
-        if (str(self['target_server']).strip() == "") or (not self['target_server']):
+        if str(self['target_server']).strip() == "":
             yield "No server targeted! target server with: !server target hostname."
         else:
-            return "Currently targeted server: " + self['target_server']
+            yield "Currently targeted server: " + self['target_server']
     
 # Used to run commands in terminal and capture the result in string var.
 #with tempfile.TemporaryFile() as tempf:
